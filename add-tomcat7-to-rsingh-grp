@@ -1,0 +1,5 @@
+
+# Needed for Jenkins build.
+# Add the tomcat7 user to the rsingh group so that Jenkins running in Tomcat 7 can write to the /home/rsingh/.m2 (M2_REPO)
+# directory
+sudo usermod -a -G rsingh tomcat7

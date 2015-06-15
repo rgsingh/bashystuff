@@ -1,0 +1,14 @@
+#!/bin/bash
+the_dir="${1}"
+the_pattern=".*\/${2}.*"
+echo Search directory $the_dir for  $the_pattern
+ls_out=$(ls -d ${the_dir}/*)
+
+while read -r line; do
+   if `echo ${line} | grep "${the_pattern}" 1>/dev/null 2>&1`
+   then
+     echo "... $line ..."
+   fi
+done <<< "$ls_out"
+
+

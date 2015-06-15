@@ -1,0 +1,3 @@
+# -r for recursive, <filename>.zip to create, directory to zip
+# zip -r my-flask-app.zip my-flask-app/
+

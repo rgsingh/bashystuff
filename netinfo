@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nmcli dev list iface eth0 |grep -e IP4 -e subnet_mask

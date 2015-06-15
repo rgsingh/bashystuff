@@ -1,0 +1,9 @@
+
+
+sudo apt-get install kernel-package fakeroot build-essential
+
+wget http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.6.3.tar.bz2
+tar xvf linux-3.6.3.tar.bz2
+cd linux-3.6/
+cat /boot/config-`uname -r`>.config
+make oldconfig

@@ -1,0 +1,3 @@
+
+# From http://wiki.maemo.org/Free_up_rootfs_space
+du -mx / | sort -n

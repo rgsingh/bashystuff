@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dpkg --get-selections | grep -v deinstall > ~/bin/working/packages.list
+echo "Check ~/bin/working/packages.list for details"

@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Work in progress
+# TODO Add another option to override the archetypeArtifactId parameter.
+#
+usage () { 
+    echo "mvn-quickstart -g 'com.mycompany.myapp' -a 'my-app'"; 
+}
+
+generateQuickStart () { 
+ mvn archetype:generate -DgroupId=$g_arg -DartifactId=$a_arg -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+}
+
+if [ -z "$1" ]
+  then
+    usage
+    exit 1
+fi
+
+
+options=':g:a:h'
+while getopts $options option
+do
+    case $option in
+        g  ) g_arg=$OPTARG;;
+        a  ) a_arg=$OPTARG; generateQuickStart;;
+        h  ) usage; exit;;
+        \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
+        :  ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
+        *  ) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+
