@@ -2,15 +2,20 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Convert .MOD files to .mp4
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-curdir=$(pwd) 
+cur_dir=$(pwd) 
+target_dir=/media/My\ Passport/Converted_Videos
 #dotmod_file_count=`ls -1 *.MOD 2>/dev/null | wc -l`
-for f in $(find $curdir -name '*.MOD' -or -name '*.mod'); do 
+#for f in $(find $curdir -name '*.MOD' -or -name '*.mod'); do 
+find . -type f -name '*.MOD' -print0 | while IFS= read -r -d '' f;
+do
     filename="${f##*/}"
     extension="${f##*.}"
     filename_no_ext=`echo $filename | awk '{print substr($0,0,index($0,"."))}'`
-    echo $filename
-    echo $extension
-    echo $filename_no_ext
+    ffmpeg_cmd=`ffmpeg -i "$f" -s 729x405 -vcodec mpeg4 -b 2300k -deinterlace -aspect 16:9 -acodec aac -strict experimental -ab 192k -ar 44100 "$target_dir/$filename_no_ext.mp4"`
+    #echo $filename
+    #echo $extension
+    #echo $filename_no_ext
     echo Converting $f...
-    echo Done conversion of $f to .mp4
-done;
+    $ffpeg_cmd
+    echo Done conversion of $f to $target_dir/$filename_no_ext.mp4
+done
