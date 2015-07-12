@@ -1,0 +1,16 @@
+#!/bin/bash
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Convert .MOD files to .mp4
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+curdir=$(pwd) 
+#dotmod_file_count=`ls -1 *.MOD 2>/dev/null | wc -l`
+for f in $(find $curdir -name '*.MOD' -or -name '*.mod'); do 
+    filename="${f##*/}"
+    extension="${f##*.}"
+    filename_no_ext=`echo $filename | awk '{print substr($0,0,index($0,"."))}'`
+    echo $filename
+    echo $extension
+    echo $filename_no_ext
+    echo Converting $f...
+    echo Done conversion of $f to .mp4
+done;
