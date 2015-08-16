@@ -1,0 +1,6 @@
+#!/bin/bash
+# Assumes a /var/lib/mongodb database, /var/log/mongodb/mongodb.log file,
+# and /etc/mongodb.conf file
+# See example mongodb.conf file in this git project directory
+
+mongod -f /etc/mongodb.conf
